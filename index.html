@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Book Store</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>SEÇİLEBİLECEK KİTAPLAR</h1>
+      </header>
+      <div class="menu">
+        <div class="book">
+          <input type="checkbox" name="asp" id="asp" />
+          <label for="asp">ASP.NET</label>
+          <input
+            type="number"
+            name="in-asp"
+            id="in-asp"
+            min="0"
+            value="0"
+            class="input"
+            disabled
+          />
+        </div>
+        <div class="book">
+          <input type="checkbox" name="vb" id="vb" />
+          <label for="vb">Visual Basic</label>
+          <input
+            type="number"
+            name="in-vb"
+            id="in-vb"
+            min="0"
+            value="0"
+            class="input"
+            disabled
+          />
+        </div>
+        <div class="book">
+          <input type="checkbox" name="csharp" id="csharp" />
+          <label for="csharp">C#.NET</label>
+          <input
+            type="number"
+            name="in-csharp"
+            id="in-csharp"
+            min="0"
+            value="0"
+            class="input"
+            disabled
+          />
+        </div>
+        <div class="book">
+          <input type="checkbox" name="delphi" id="delphi" />
+          <label for="delphi">Delphi</label>
+          <input
+            type="number"
+            name="in-delphi"
+            id="in-delphi"
+            min="0"
+            value="0"
+            class="input"
+            disabled
+          />
+        </div>
+        <div>&nbsp;</div>
+        <button type="button" class="btn" onclick="calculateTotal()">
+          Hesapla
+        </button>
+      </div>
+      <p id="result"></p>
+    </div>
+    <script>
+      const asp = document.getElementById("asp");
+      const in_asp = document.getElementById("in-asp");
+      asp.addEventListener("click", function () {
+        // if (asp.checked) {
+        //   in_asp.disabled = false;
+        //   in_asp.disabled = false;
+        // } else {
+        //   in_asp.disabled = true;
+        //   in_asp.value = "0";
+        // }
+        if (asp.checked) {
+          asp.style.visibility = "hidden";
+          in_asp.disabled = false;
+        }
+      });
+
+      const vb = document.getElementById("vb");
+      const in_vb = document.getElementById("in-vb");
+      vb.addEventListener("click", function () {
+        // if (vb.checked) in_vb.disabled = false;
+        // else {
+        //   in_vb.disabled = true;
+        //   in_vb.value = "0";
+        // }
+        if (vb.checked) {
+          vb.style.visibility = "hidden";
+          in_vb.disabled = false;
+        }
+      });
+
+      const csharp = document.getElementById("csharp");
+      const in_csharp = document.getElementById("in-csharp");
+      csharp.addEventListener("click", function () {
+        // if (csharp.checked) in_csharp.disabled = false;
+        // else {
+        //   in_csharp.disabled = true;
+        //   in_csharp.value = "0";
+        // }
+        if (csharp.checked) {
+          csharp.style.visibility = "hidden";
+          in_csharp.disabled = false;
+        }
+      });
+
+      const delphi = document.getElementById("delphi");
+      const in_delphi = document.getElementById("in-delphi");
+      delphi.addEventListener("click", function () {
+        // if (delphi.checked) in_delphi.disabled = false;
+        // else {
+        //   in_delphi.disabled = true;
+        //   in_delphi.value = "0";
+        // }
+        if (delphi.checked) {
+          delphi.style.visibility = "hidden";
+          in_delphi.disabled = false;
+        }
+      });
+
+      function calculateTotal() {
+        let total = 0;
+        let selectedBooks = [];
+
+        if (document.getElementById("asp").checked) {
+          if (in_asp.value >= 10 && in_asp.value < 20) {
+            total += in_asp.value * 150 - in_asp.value * 30;
+          } else if (in_asp.value >= 20) {
+            total += in_asp.value * 150 - in_asp.value * 45;
+          } else {
+            total += in_asp.value * 150;
+          }
+
+          selectedBooks.push(
+            "ASP.NET " + String(in_asp.value).replace(/^0+(?=\d)/, "") + " ADET"
+          );
+        }
+        if (document.getElementById("vb").checked) {
+          if (in_vb.value >= 10 && in_vb.value < 20) {
+            total += in_vb.value * 100 - in_vb.value * 20;
+          } else if (in_vb.value >= 20) {
+            total += in_vb.value * 100 - in_vb.value * 30;
+          } else {
+            total += in_vb.value * 100;
+          }
+
+          selectedBooks.push(
+            "VISUAL BASIC " +
+              String(in_vb.value).replace(/^0+(?=\d)/, "") +
+              " ADET"
+          );
+        }
+        if (document.getElementById("csharp").checked) {
+          if (in_vb.value >= 10 && in_vb.value < 20) {
+            total += in_csharp.value * 120 - in_csharp.value * 24;
+          } else if (in_csharp.value >= 20) {
+            total += in_csharp.value * 120 - in_csharp.value * 36;
+          } else {
+            total += in_csharp.value * 120;
+          }
+
+          selectedBooks.push(
+            "C#.NET " +
+              String(in_csharp.value).replace(/^0+(?=\d)/, "") +
+              " ADET"
+          );
+        }
+        if (document.getElementById("delphi").checked) {
+          if (in_vb.value >= 10 && in_vb.value < 20) {
+            total += in_delphi.value * 250 - in_delphi.value * 50;
+          } else if (in_delphi.value >= 20) {
+            total += in_delphi.value * 250 - in_delphi.value * 75;
+          } else {
+            total += in_delphi.value * 250;
+          }
+
+          selectedBooks.push(
+            "Delphi " +
+              String(in_delphi.value).replace(/^0+(?=\d)/, "") +
+              " ADET"
+          );
+        }
+
+        const resultText =
+          selectedBooks.length > 0
+            ? "Seçilen Kitaplar:<br>" +
+              selectedBooks.map((book) => "&emsp;- " + book).join("<br>") +
+              "<br>Toplam: " +
+              total +
+              " TL"
+            : "Hiçbir kitap seçilmedi.";
+
+        document.getElementById("result").innerHTML = resultText;
+      }
+    </script>
+  </body>
+</html>
